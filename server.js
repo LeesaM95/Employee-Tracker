@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const connection = require('./db/connection');
 
 const startMenu = () => {
-    console.log(`======= EMPLOYEE ❧ ☼ ☙ TRACKER =======`);
+    console.log(`======= EMPLOYEE ❧ ☙ TRACKER =======`);
 
     inquirer
         .prompt({
