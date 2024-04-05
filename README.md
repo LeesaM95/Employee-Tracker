@@ -1,186 +1,53 @@
-# Employee-Tracker
- 
-# 12 SQL: Employee Tracker
-
-## Your Task
-
-Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called **content management systems (CMS)**. Your assignment this week is to build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
-
-Because this Challenge will require the use of the `Inquirer` package, ensure that you install and use Inquirer version 8.2.4. To do so, use the following command in your project folder: `npm i inquirer@8.2.4`.
-
-Because this application won’t be deployed, you’ll also need to create a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met. You’ll need to submit a link to the video and add it to the README of your project.
-
-## User Story
-
-```md
-AS A business owner
-I WANT to be able to view and manage the departments, roles, and employees in my company
-SO THAT I can organize and plan my business
-```
-
-## Acceptance Criteria
-
-```md
-GIVEN a command-line application that accepts user input
-WHEN I start the application
-THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-WHEN I choose to view all departments
-THEN I am presented with a formatted table showing department names and department ids
-WHEN I choose to view all roles
-THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-WHEN I choose to view all employees
-THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-WHEN I choose to add a department
-THEN I am prompted to enter the name of the department and that department is added to the database
-WHEN I choose to add a role
-THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
-WHEN I choose to add an employee
-THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-WHEN I choose to update an employee role
-THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
-```
-
-## Mock-Up
-
-The following video shows an example of the application being used from the command line:
-
-[![A video thumbnail shows the command-line employee management application with a play button overlaying the view.](./Assets/12-sql-homework-video-thumbnail.png)](https://2u-20.wistia.com/medias/2lnle7xnpk)
-
-## Getting Started
-
-This Challenge will require a video submission. Refer to the [Fullstack Blog Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for additional guidance on creating a video.
-
-You’ll need to use the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to your MySQL database and perform queries, and the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4) to interact with the user via the command line.
-
-**Important**: You will be committing a file that contains your database credentials. Make sure that your MySQL password is not used for any other personal accounts, because it will be visible on GitHub. In upcoming lessons, you will learn how to better secure this password, or you can start researching npm packages now that could help you.
-
-You might also want to make your queries asynchronous. MySQL2 exposes a `.promise()` function on Connections to upgrade an existing non-Promise connection to use Promises. To learn more and make your queries asynchronous, refer to the [npm documentation on MySQL2](https://www.npmjs.com/package/mysql2).
-
-Design the database schema as shown in the following image:
-
-![Database schema includes tables labeled “employee,” role,” and “department.”](./Assets/12-sql-homework-demo-01.png)
-
-As the image illustrates, your schema should contain the following three tables:
-
-* `department`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `name`: `VARCHAR(30)` to hold department name
-
-* `role`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `title`: `VARCHAR(30)` to hold role title
-
-    * `salary`: `DECIMAL` to hold role salary
-
-    * `department_id`: `INT` to hold reference to department role belongs to
-
-* `employee`
-
-    * `id`: `INT PRIMARY KEY`
-
-    * `first_name`: `VARCHAR(30)` to hold employee first name
-
-    * `last_name`: `VARCHAR(30)` to hold employee last name
-
-    * `role_id`: `INT` to hold reference to employee role
-
-    * `manager_id`: `INT` to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
-
-You might want to use a separate file that contains functions for performing specific SQL queries you'll need to use. A constructor function or class could be helpful for organizing these. You might also want to include a `seeds.sql` file to pre-populate your database, making the development of individual features much easier.
-
-## Bonus
-
-Try to add some additional functionality to your application, such as the ability to do the following:
-
-* Update employee managers.
-
-* View employees by manager.
-
-* View employees by department.
-
-* Delete departments, roles, and employees.
-
-* View the total utilized budget of a department in other words, the combined salaries of all employees in that department.
-
-## Grading Requirements
-
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-
-This Challenge is graded based on the following criteria:
-
-### Deliverables: 10%
-
-* Your GitHub repository containing your application code.
-
-### Walkthrough Video: 27%
-
-* A walkthrough video that demonstrates the functionality of the employee tracker must be submitted, and a link to the video should be included in your README file.
-
-* The walkthrough video must show all of the technical acceptance criteria being met.
-
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
-
-* The walkthrough video must demonstrate a functional menu with the options outlined in the acceptance criteria.
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the preceding acceptance criteria plus the following:
-
-    * Uses the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
-
-    * Uses the [MySQL2 package](https://www.npmjs.com/package/mysql2) to connect to a MySQL database.
-
-* Follows the table schema outlined in the Challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality README with description and a link to a walkthrough video.
-
-### Application Quality 10%
-
-* The application user experience is intuitive and easy to navigate.
-
-### Bonus
-
-Fulfilling any of the following can add up to 20 points to your grade. Note that the highest grade you can achieve is still 100:
-
-* Application allows users to update employee managers (2 points).
-
-* Application allows users to view employees by manager (2 points).
-
-* Application allows users to view employees by department (2 points).
-
-* Application allows users to delete departments, roles, and employees (2 points for each).
-
-* Application allows users to view the total utilized budget of a department&mdash;in other words, the combined salaries of all employees in that department (8 points).
-
-## Review
-
-You are required to submit BOTH of the following for review:
-
-* A walkthrough video demonstrating the functionality of the application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
-- - -
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+# Employee Tracker
+
+## Description
+With the Employee Tracker application, a user can do several things. Designed with company in mind, users can view all departments, employees, and roles of the employees in those specific departments. Should the business grow, users can add departments, roles, and employees, as well as update employee roles should they be promoted, demoted, or switched departments. And, if the company has some losses, users can delete roles, departments, and any employees they may need to let go, or have left for new opportunities. They can also keep track of the budgets of each department quickly and effeciently.
+
+## Visuals
+As this application runs in a user's terminal, there is no link to an application. Instead, below is a demo video of what can be done and how.
+
+## Installation Part One: General Installation
+This application runs on a node server, and with no site deployed, a user will have to clone the repository of this application via `git clone` on the main page. 
+When that's done and the repository is open, the user will have to open a terminal in the *main folder* of the application and run an `npm i/npm install` command (as this application comes with a package.json file that has all dependencies already loaded and ready to be downloaded).
+
+## Installation Part Two: MySql
+The employee tracker also uses a MySql database to compile all of the information and adjust it accordingly. As such, MySql must be installed and functioning on your device in order for this application to run. You can find all of the information on how to download MySql at <a href="https://dev.mysql.com/doc/mysql-getting-started/en/"> This Link</a>. You'll then follow the commands below:
+
+To execute MySQL, open a terminal either in your programming app or on your device, and input the following command:
+~~~
+    [mysql -u root]
+~~~
+If you have a password attached to your MySQL account, execute the command:
+~~~
+    [mysql -u root -p] 
+~~~
+
+This will prompt you to enter your password before continuing. 
+
+Once you've been logged in, you'll run the following commands to source the schema file and seed the database:
+~~~
+    [SOURCE db/schema.sql]
+~~~
+~~~
+    [SOURCE db/seeds.sql]
+~~~
+Note: MySQL commands are **not** case sensitive, but it's generally easier to see what you're doing when you do. 
+
+Finally, to run the application itself, open another terminal in the main folder, or use the one you had open to install the package.json file, and run the following command:
+~~~
+    [ node server.js ]
+~~~
+
+## Support
+In the event that this application decides to throw some rather rude errors your way, please feel free to contact me here on GitHub under LeesaM95, or at my email `leesamarie95@gmail.com`. I can't guarantee I'll have all of the answers, but I will absolutely help as much as I can. If, in the event that I also don't know what's going on, the GitHub help forums and the Slack Overflow help forums are wonderful tools to sift through!
+
+## Contributing
+I'm not the person to ever say 'no' to some helpful contributions. I'm always looking for better ways to code, and for mentors that know what they're doing and can dumb down concepts in a way that's easily understandable. If you happen to see something you think can be improved, please feel free to shoot me an collaboration request, and I'll add you to the list. I only ask that you have some previous knowledge under your belt if you're going to add to my code, and to create a separate branch.
+
+## Acknowledgements
+As always, big thanks to my teachers and fellow classmates for putting up with my ten-thousand question process while working on this. I was really struggling with how I was going to even *begin* coding this. On that note, I'd love to acknowledge and praise <a href="https://github.com/mxu4321">mxu4321</a> on GitHub for their absolutely stellar repo for this particular assignment. I'd still be absolutely lost without reference their code. They're truly a gift.
+
+## Status
+This application is considered closed and completed at this time, as I don't think I'll ever truly come back to it (once I got a taste of sequelize, I'll never go back to just plain MySQL). Should I want to fuss around with this in the future, I probably will.
+
+    

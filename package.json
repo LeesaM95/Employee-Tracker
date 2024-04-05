@@ -5,14 +5,16 @@
     "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server/server.js"
+        "start": "node server/server.js",
+        "seed": "npm run seed"
     },
     "author": "",
     "license": "ISC",
     "dependencies": {
         "express": "^4.16.4",
         "inquirer": "^8.2.0",
-        "mysql2": "^3.9.3"
+        "mysql2": "^3.9.3",
+        "console.table": "^0.10.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.2"

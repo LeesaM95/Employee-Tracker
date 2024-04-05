@@ -1,11 +1,9 @@
---Drop the database if it exists--
+
 DROP DATABASE IF EXISTS employeeTracker_db;
 
---create the employee tracker db --
 CREATE DATABASE employeeTracker_db;
 
--- Tell Sql to use the database --
-USE DATABASE employeeTracker_db;
+USE employeeTracker_db;
 
 CREATE TABLE department (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -25,5 +23,4 @@ CREATE TABLE employee (
     last_name VARCHAR(30),
     role_id INT,
     manager_id INT
-    ON DELETE SET NULL
 )

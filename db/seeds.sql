@@ -22,7 +22,7 @@ VALUES  ('CFO, 439956, 1'),
         ('Executive Assistant, 60000, 5'),
         ('Data Entry Clerk, 37360, 5');
 
-INSERT INTO employees (first_name, last_name, role_id, manager_id)
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES  ('Jenny', 'Yokobori', 4, NULL),
         ('Manuel', 'Orellana', 7, 7),
         ('Avery', 'Hill', 13, NULL),
