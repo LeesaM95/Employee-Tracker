@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS = 0;
+
 INSERT INTO department (name)
 VALUES ('Finance'),
        ('Marketing'),
@@ -44,7 +46,7 @@ VALUES  ('Jenny', 'Yokobori', 4, NULL),
         ('Sara', 'Kujou', 14, NULL),
         ('Hu', 'Tao', 10, 10);
 
-
+SET FOREIGN_KEY_CHECKS = 1;
 
 
 
