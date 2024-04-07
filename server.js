@@ -90,7 +90,7 @@ function ViewAllDepartments() {
     const query = `SELECT * FROM department;`
     connection.query(query, (err, data) => {
         if (err) throw err;
-        console.table(data);
+        conTable(data);
         startMenu();
     })
 };
@@ -107,7 +107,7 @@ function ViewAllRoles() {
     `
     connection.query(query, (err, data) => {
         if (err) throw err;
-        console.table(data);
+        conTable(data);
         startMenu();
     })
 };
@@ -132,7 +132,7 @@ function ViewAllEmployees() {
 
     connection.query(query, (err, data) => {
         if (err) throw err;
-        console.table(data);
+        conTable(data);
         startMenu();
     })
 };
@@ -372,7 +372,7 @@ function DeleteDepartment() {
                                     if (res.affectedRows === 0) {
                                         console.log(`Department ${data.name} does not exist.`)
                                     } else {
-                                        console.table({
+                                        conTable({
                                             message: `Department ${data.name} has been successfully removed.`,
                                             affectedRows: res.affectedRows,
                                         });
@@ -463,7 +463,7 @@ function DeleteRole() {
                                     if (res.affectedRows === 0) {
                                         console.log(`${data.title} does not exist in Roles.`)
                                     } else {
-                                        console.table({ message: `The role of ${data.title} has been successfully removed.`, affectedRows: res.affectedRows });
+                                        conTable({ message: `The role of ${data.title} has been successfully removed.`, affectedRows: res.affectedRows });
                                         ViewAllRoles();
                                     }
                                 }
